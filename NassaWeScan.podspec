@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name             = 'NassaWeScan'
-    spec.version          = '1.1.0'
+    spec.version          = '1.1.1'
     spec.summary          = 'Camera Lib - Document Scanning - iOS'
     spec.description      = 'NassaWeScan allows to take a photo and automatically scan data! It also allows using image gallery. Forked version of standard WeScan pod.'
   
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     spec.authors           = {
       'NASSA-digital-lab' => 'devops@assanet.com'
     }
-    spec.source           = { :git => 'git@github.com:NASSA-digital-lab/nassa-wescan.git', :tag => "#{spec.version}" }
+    spec.source           = { :git => 'https://github.com/NASSA-digital-lab/nassa-wescan.git', :tag => "#{spec.version}" }
   
     spec.swift_version = '5.0'
     spec.ios.deployment_target = '10.0'
