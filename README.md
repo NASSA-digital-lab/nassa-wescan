@@ -76,12 +76,9 @@ Run `carthage update` to build the framework and drag the built `WeScan.framewor
 
 Just download the project, and drag and drop the "WeScan" folder in your project.
 
-
-
 <p align="center">
     <img width="900px" src="Assets/project.png">
 </p>
-
 
 Simply add the WeScan framework in the project's Embedded Binaries and Linked Frameworks and Libraries.
 
@@ -106,6 +103,7 @@ class YourViewController: UIViewController, ImageScannerControllerDelegate {
 ```
 
 4. Implement the delegate functions inside your view controller:
+
 ```swift
 func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error) {
     // You are responsible for carefully handling the error
@@ -149,6 +147,35 @@ ImageScannerController *scannerViewController = [[ImageScannerController alloc] 
 ```
 
 <br>
+
+## Deployment of new Pod version
+
+1. This steps were tested with CocoaPods version: `1.15.2`.
+2. Should have Contributor permissions to repo: [NassaWeScan](https://github.com/NASSA-digital-lab/nassa-wescan), this access is granted by Nassa Admin: [Email](devops@assanet.com)
+3. For more information about these steps, refer to: 
+    - [Create Release](https://medium.com/@robdeans/creating-and-uploading-your-own-cocoapods-a1c3f3b5061)
+    - [Publish New Version](https://theblueprototype.medium.com/how-to-create-publish-cocoapods-library-5bf305393c86)
+
+### 1. Add a new version TAG
+
+This step is important, due to Cocoa Pods will upload and update the `Release` section on our git repository.
+
+1. Upgrade manually the value of `spec.version` on the `NassaWeScan.podspec` file, based on it type, example:
+    - Patch change: value from `1.1.3` to `1.1.4`
+    - Minor change: value from `1.1.1` to `1.2.0`
+    - Major change: value from `1.1.1` to `2.0.0`
+
+### 2. Make sure you upload your changes with corresponding tags
+
+Upload your changes to Github with flag `--tags`, example: `git push -u origin main --tags`. This will ensure that your changes are being uploaded wit the Tags, so CocoaPods will create a new artifact.
+
+### 3. Update Pod Repo
+
+Once your changes are in your remote branch, run the following command on the root repository, where `NassaWeScan.podspec` file is located: `pod repo push NassaWeScan NassaWeScan.podspec --allow-warnings`. Once the command is finished, your pod is ready to be published.
+
+## Publish new Pod version
+
+Once your new version is updated and ready to publish, just run the command: `pod trunk push NassaWeScan.podspec --allow-warnings`
 
 ## Contributing
 
